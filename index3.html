@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background-color: #343a40;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background-color: #1f1f1f;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      width: 300px;
+      padding: 20px;
+    }
+
+    .card-header {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #fff;
+      color: #333;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 8px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #0056b3;
+    }
+
+    .form-group .signup-link {
+      text-align: center;
+      margin-top: 10px;
+      color: #fff;
+    }
+
+    .form-group .signup-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .form-group .signup-link a:hover {
+      color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">Sign In</div>
+      <form>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="nameID" placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" name="pasWD" id="password" placeholder="Enter your password">
+        </div>
+        <div class="form-group">
+          <button type="submit" id="signInBtn">Sign In</button>
+          <div class="signup-link">
+          <p> Forgot password and signup features will developed</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    $(document).ready(function() {
+      $('#signInBtn').click(function(e) {
+        e.preventDefault(); // Prevent form submission
+
+        var username = $('#username').val();
+        var password = $('#password').val();
+
+        // Perform input validation
+        if (username === '') {
+          alert('Please enter your username.');
+          return;
+        }
+
+        if (password === '') {
+          alert('Please enter your password.');
+          return;
+        }
+        if(username==='uname' && password==='passwd'){
+          window.location.href="frontendproj1.html"
+        }
+        // Perform authorization logic
+        // $.post('/login', { username: username, password: password })
+        //   .done(function(response) {
+        //     // Handle the response from the server
+        //     console.log(response);
+        //   })
+        //   .fail(function() {
+        //     // Handle any errors
+        //     console.log('Login failed');
+        //   });
+
+        // For now, we'll just log the username and password
+        console.log('Username: ' + username);
+        console.log('Password: ' + password);
+      });
+    });
+  </script>
+</body>
+</html>
