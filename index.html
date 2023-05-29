@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Add Bootstrap CSS CDN link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Write Your Order Request</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/svdcod">Github</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.google.com/intl/en_in/gmail/about/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Form -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h3 class="mb-4">Contact Us</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Request</label>
+                        <input type="text" class="form-control" id="service" name="service" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Email ID:</label>
+                        <input type="tel" class="form-control" id="emailid" name="emailid" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add EmailJS SDK and initialize -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("9eNphRGEXtLuT17Rp"); // Replace with your EmailJS user ID
+        })();
+    </script>
+
+    <!-- Add your custom script -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get user details from form fields
+            var name = document.getElementById('name').value;
+            var service = document.getElementById('service').value;
+            var phone = document.getElementById('phone').value;
+            var description = document.getElementById('description').value;
+            var emailid=document.getElementById('emailid').value;
+
+            // Send email using EmailJS
+            emailjs.send("service_ni22s04", "template_otmsqlq", {
+                to_name: "Your Name",
+                from_name: name,
+                service_request: service,
+                emailid:emailid,
+                phone: phone,
+                description: description
+            }).then(function (response) {
+                console.log('Email sent successfully!');
+                window.location.reload(); // Refresh the page
+            }, function (errorr) {
+                console.log('Error sending email:', error);
+            });
+        })
+    </script>
+</body>
+</html>
